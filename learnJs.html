@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>系统学习js</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="css/index2.css" rel="stylesheet">
+</head>
+<body>
+<h1>系统学习js</h1>
+<script type="text/javascript">
+    var sum = function(num1,num2){
+        return ""+num1+" + "+num2+" = "
+            +(num1+num2) ;
+    };
+
+    alert(sum(10,10));
+    var anotherSum = sum;
+    alert(anotherSum(10,30));
+    var book = {
+        _year:2004,
+        edition:1
+    };
+    alert(book._year);
+    for (var a in book)
+        alert('属性：' + a);
+    Object.defineProperty(book,'year',{
+        get:function(){
+            return this._year;
+        },
+        set:function(newValue){
+            this._year = newValue;
+            this.edition = newValue-2004;
+        }
+    });
+    book.year = 2016;
+    alert(book.edition);
+    var descriptor = Object.getOwnPropertyDescriptor(book,'_year');
+    alert(descriptor.value);
+    alert(descriptor.enumerable);
+
+    var descriptor1 = Object.getOwnPropertyDescriptor(book,'year');
+    alert(descriptor1.value);
+    alert(descriptor1.get);
+</script>
+</body>
+</html>
